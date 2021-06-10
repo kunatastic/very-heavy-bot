@@ -86,7 +86,7 @@ client.on("message", async (message) => {
         return;
       }
       const deleteInfo = await Weight.deleteOne({ _id: user_id });
-      console.log(deleteInfo);
+      // console.log(deleteInfo);
 
       const timeTaken = Date.now() - message.createdTimestamp;
       message.reply(`Hmmm! Deleted successfully. Latency: ${timeTaken}ms.`);
