@@ -1,4 +1,7 @@
-require("dotenv").config();
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
 const PORT = process.env.PORT || 5001;
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -100,7 +103,7 @@ client.on("message", async (message) => {
 
       const timeTaken = Date.now() - message.createdTimestamp;
       message.reply(
-        `Go here http://localhost:${PORT}/${name} !. Latency: ${timeTaken}ms.`
+        `Go here ${process.env.URI}/${name} !. Latency: ${timeTaken}ms.`
       );
     } catch (err) {
       console.log(err);
